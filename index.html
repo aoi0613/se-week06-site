@@ -1,7 +1,183 @@
-<!doctype html>
-<meta charset=
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <style>
+        :root {
+            --text-color: #333333;
+            --bg-color: #f4f7f6;
+            --section-bg: #ffffff;
+            --accent-color: #0056b3;
+            --border-color: #dddddd;
+        }
 
-"utf-8">
-<title>自己紹介</title>
-<h1>自己紹介</h1>
-<p>授業で作成したページです。</p>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        section {
+            background-color: var(--section-bg);
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 8px;
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .work-item {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .work-item:last-child {
+            margin-bottom: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666666;
+            font-size: 0.9rem;
+        }
+
+        /* スマートフォン向け調整 */
+        @media (max-width: 600px) {
+            section {
+                padding: 15px;
+            }
+            header {
+                padding: 1.5rem 1rem;
+            }
+            h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>My Profile</h1>
+    </header>
+
+    <div class="container">
+        
+        <section id="about">
+            <h2>About</h2>
+            <p>こんにちは。私は現在、[大学名・所属]で学んでいます。</p>
+            <p>主な関心分野は[分野名、例：Web技術、データ分析、情報デザインなど]です。日々の授業や個人的な探求を通じて、テクノロジーがどのように社会の課題解決に役立つのかについて知識を深めています。</p>
+            <p id="greeting-message"></p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <p>現在学習中、または授業で扱ったことのある技術や知識のリストです。</p>
+            <ul>
+                <li><strong>プログラミング:</strong> [例: Python, HTML/CSS, JavaScript]</li>
+                <li><strong>ツール・環境:</strong> [例: VS Code, Git, コマンドライン操作]</li>
+                <li><strong>その他学習分野:</strong> [例: アルゴリズム基礎、統計学基礎、UI/UXの基本]</li>
+            </ul>
+        </section>
+
+        <section id="works">
+            <h2>Works</h2>
+            <p>これまでの授業や演習で作成した成果物の一部を紹介します。</p>
+            
+            <div class="work-item">
+                <h3>[成果物のタイトル1]</h3>
+                <p><strong>概要:</strong> [何を作る課題・プロジェクトだったのか、1〜2文で説明します]</p>
+                <p><strong>工夫した点:</strong> [使いやすさや、コードの書き方などで意識したポイント]</p>
+            </div>
+
+            <div class="work-item">
+                <h3>[成果物のタイトル2]</h3>
+                <p><strong>概要:</strong> [成果物の簡単な説明]</p>
+                <p><strong>工夫した点:</strong> [難しかった点と、それをどう乗り越えたか]</p>
+            </div>
+        </section>
+
+        <section id="reflection">
+            <h2>Reflection</h2>
+            <p>これまでの演習を通じて、[学んだ最大の教訓や、自分が成長したと感じる点]を実感しました。最初はエラーの解決に時間がかかっていましたが、少しずつ自分で原因を特定できるようになってきました。</p>
+            <p>今後は、さらに[次に学びたい技術や、深掘りしたいテーマ]について学習を進め、より実用的なものを作れるようにスキルを磨いていきたいと考えています。</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> My Profile</p>
+    </footer>
+
+    <script>
+        // 1ファイルにまとめる条件を満たすための簡単なJavaScript実装
+        document.addEventListener('DOMContentLoaded', () => {
+            // フッターの年を自動更新
+            const yearSpan = document.getElementById('current-year');
+            yearSpan.textContent = new Date().getFullYear();
+
+            // 時間帯に応じた挨拶文の表示
+            const hour = new Date().getHours();
+            const greetingElement = document.getElementById('greeting-message');
+            
+            let greetingText = '';
+            if (hour >= 5 && hour < 12) {
+                greetingText = '本日は朝から学習に取り組んでいます。';
+            } else if (hour >= 12 && hour < 18) {
+                greetingText = '午後も引き続きスキルアップを目指して学習中です。';
+            } else {
+                greetingText = '本日の学びを振り返りながらページを更新しています。';
+            }
+            
+            greetingElement.textContent = greetingText;
+        });
+    </script>
+</body>
+</html>
